@@ -17,8 +17,5 @@
     enabled: yes
     state: started
 
-# - name: Create username and password
-#   ansible.builtin.command: mysql_secure_installation --set-root-pass "{{ lookup('aws_ssm', '/robotshop/{{environment}}/mysql_root_pass', region='us-east-1', decrypt=True ) }}"
-
 - name: Create username and password
-  ansible.builtin.command: mysql_secure_installation --set-root-pass "{{ lookup('aws_ssm', '/robotshop/ + environment + /mysql_root_pass', region='us-east-1', decrypt=True ) }}"
+  ansible.builtin.command: mysql_secure_installation --set-root-pass "{{ lookup('aws_ssm', '/robotshop/{{environment}}/mysql_root_pass', region='us-east-1', decrypt=True ) }}"
